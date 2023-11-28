@@ -726,9 +726,6 @@ static ssize_t store_##file_name					\
 	int ret, temp;							\
 	struct cpufreq_policy new_policy;				\
 									\
-	if (&policy->object == &policy->min)				\
-		return count;						\
-									\
 	memcpy(&new_policy, policy, sizeof(*policy));			\
 	new_policy.min = policy->user_policy.min;			\
 	new_policy.max = policy->user_policy.max;			\
@@ -789,13 +786,6 @@ static ssize_t store_scaling_governor(struct cpufreq_policy *policy,
 	int ret;
 	char	str_governor[16];
 	struct cpufreq_policy new_policy;
-
-	/*
-	 * Force the LITTLE CPU cluster to use the default govenor (performance)
-	 * because keeping it at its maximum frequency is best.
-	 */
-	if (cpumask_test_cpu(policy->cpu, cpu_lp_mask))
-		return count;
 
 	memcpy(&new_policy, policy, sizeof(*policy));
 
