@@ -13,6 +13,10 @@
 #include <linux/module.h>
 #include <asm/neon-intrinsics.h>
 
+#ifdef CONFIG_CC_IS_CLANG
+#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
+#endif
+
 void xor_arm64_neon_2(unsigned long bytes, unsigned long *p1,
 	unsigned long *p2)
 {
