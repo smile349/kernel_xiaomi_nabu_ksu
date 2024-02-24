@@ -1,8 +1,14 @@
 on:
     workflow_dispatch:
+      inputs:
+        title:
+          description: 'Action title'
+          required: false
+          type: environment
     push:
         branches:
             udc
+run-name: ${{inputs.title}}
 jobs:
     buildAndUpload:
         runs-on: ubuntu-latest
