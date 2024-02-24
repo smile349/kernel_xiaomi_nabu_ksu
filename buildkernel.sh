@@ -22,20 +22,12 @@ setup_environment() {
     cd ../..
 }
 
-if [! -d "build-shit"]
-then
-    setup_environment
-fi
+[ ! -d "build-shit"] && setup_environment
 
-if [ -d "out"]
-then
-    rm -rf ./out
-fi
 
-if [ -d "CosmicFresh/Image"]
-then
-    rm CosmicFresh/Image -f
-fi
+[ -d "out"] && rm -rf ./out
+
+[ -f "CosmicFresh/Image"] && rm CosmicFresh/Image -f
 
 make O=out -j$(nproc --all) nabu_defconfig || exit
 make O=out -j$(nproc --all) || exit
