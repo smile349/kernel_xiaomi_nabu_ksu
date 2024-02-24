@@ -11,7 +11,7 @@ export CROSS_COMPILE=$(pwd)/build-shit/gcc-arm64/bin/aarch64-elf-
 export CLANG_URL="https://android.googlesource.com/platform//prebuilts/clang/host/linux-x86/+archive/3857008389202edac32d57008bb8c99d2c957f9d/clang-r383902.tar.gz"
 
 setup_environment() {
-    sudo apt update && sudo apt install -y lib32ncurses5-dev automake libssl-dev lzop policycoreutils xsltproc libbz2-1.0 \
+    $SUDO apt update && $SUDO apt install -y lib32ncurses5-dev automake libssl-dev lzop policycoreutils xsltproc libbz2-1.0 \
                         lib32z-dev unzip bzip2 maven liblz4-tool libghc-bzlib-dev libxml-simple-perl \
                         build-essential flex gperf pngcrush libxml-sax-base-perl x11proto-core-dev minicom \
                         libswitch-perl ccache libxml2-utils git bison pwgen zip schedtool wget \
