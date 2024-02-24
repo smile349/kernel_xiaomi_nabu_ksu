@@ -13,6 +13,6 @@ RUN apt update && apt install -y \
     libgl1-mesa-dev libbz2-dev make gnupg libncurses5 fontconfig
 RUN wget https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz
 RUN tar xzf Python-2.7.9.tgz
-RUN cd Python-2.7.9 && ./configure --enable-optimizations && make altinstall
+RUN cd Python-2.7.9 && ./configure --enable-optimizations && make altinstall -j$(nproc --all)
 RUN ln /usr/local/bin/python2.7 /usr/local/bin/python2
 ENTRYPOINT [ "/bin/bash", "-c", "./buildkernel.sh" ]
