@@ -3,4 +3,4 @@ LABEL org.opencontainers.image.authors="undefined_1@outlook.com"
 LABEL description="This Image used to build kernel with ksu for xiaomi nabu."
 
 RUN ["/bin/sh", "-c", "apt update && apt install git curl -y"]
-ENTRYPOINT [ "/bin/bash -c", "pwd && /bin/bash ./buildkernel.sh" ]
+ENTRYPOINT [ "/bin/bash", "-c", "pwd && ./buildkernel.sh" ]
