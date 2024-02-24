@@ -4,7 +4,7 @@ on:
         title:
           description: 'Action title'
           required: false
-          type: environment
+          type: string
     push:
         branches:
             udc
