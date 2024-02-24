@@ -19,13 +19,13 @@ jobs:
             - name: pull newest KernelSU
               run: |
                 cd nabu_kernel/KernelSU
-                pwd
                 git pull -f 
-                ls 
+                KSU_ver=$(expr 10000 + $(git rev-list --count HEAD) + 200)
+                echo "# KernelSU version: ${KSU_ver}   " >> $GITHUB_STEP_SUMMARY
+                echo "### Build  Date: $(date)   " >> $GITHUB_STEP_SUMMARY
                 cd ../..
             - name: build kernel
               run: |
-                
                 docker run -v $(pwd)/nabu_kernel:/nabu_kernel -w/nabu_kernel nabu_kernel
             - name: upload artifact
               uses: actions/upload-artifact@v3
