@@ -16,7 +16,7 @@ setup_environment() {
     git clone https://github.com/KenHV/gcc-arm64.git --single-branch -b master --depth=1 || exit
     git clone https://github.com/KenHV/gcc-arm.git --single-branch -b master --depth=1 || exit
     mkdir clang && cd clang || exit
-    wget $CLANG_URL -o clang.tar.gz || exit
+    wget $CLANG_URL -O clang.tar.gz || exit
     ls -lh
     tar xzvf clang.tar.gz || exit
     export PATH=$(pwd):$PATH
