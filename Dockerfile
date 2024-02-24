@@ -5,4 +5,4 @@ LABEL description="This Image used to build kernel with ksu for xiaomi nabu."
 RUN ["/bin/sh", "-c", "apt update && apt install git curl -y"]
 RUN ["echo", "$(pwd)"]
 RUN ["echo", "$(ls)"]
-ENTRYPOINT [ "./buildkernel.sh" ]
+ENTRYPOINT [ "bash ./buildkernel.sh" ]
