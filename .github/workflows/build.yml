@@ -39,6 +39,11 @@ jobs:
               with:
                 name: kernel
                 path: nabu_kernel/CosmicFresh/Kernel.zip
-
+            - name: Notify to telegram bot
+              uses: appleboy/telegram-action@master
+              with:
+                token: ${{secrets.TELEGRAM_BOT_TOKEN}}
+                message_file: nabu_kernel/CosmicFresh/Kernel.zip
+                message: ${{inputs.title}}
 
         
