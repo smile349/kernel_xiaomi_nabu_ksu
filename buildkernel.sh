@@ -16,18 +16,14 @@ setup_environment() {
     git clone https://github.com/KenHV/gcc-arm64.git --single-branch -b master --depth=1 || exit
     git clone https://github.com/KenHV/gcc-arm.git --single-branch -b master --depth=1 || exit
     mkdir clang && cd clang || exit
-    wget $CLANG_URL -O clang.tar.gz || exit
-    ls -lh
-    tar xzvf clang.tar.gz || exit
-    export PATH=$(pwd):$PATH
+    echo "Downloading Clang..."
+    wget $CLANG_URL -O clang.tar.gz -q || exit
+    tar xzf clang.tar.gz || exit
     cd ../..
 }
 
 [ ! -d "build-shit" ] && setup_environment
-
-
 [ -d "out" ] && rm -rf ./out
-
 [ -f "CosmicFresh/Image" ] && rm CosmicFresh/Image -f
 
 make O=out -j$(nproc --all) nabu_defconfig || exit

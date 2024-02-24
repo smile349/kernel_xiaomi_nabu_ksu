@@ -17,7 +17,7 @@ jobs:
               run: docker build -t nabu_kernel nabu_kernel
             - name: build kernel
               run: |
-                cd nabu_kernel/KernelSU && git pull -f && cd ../..
+                cd nabu_kernel/KernelSU && git pull -f && ls && cd ../..
                 docker run -v $(pwd)/nabu_kernel:/nabu_kernel -w/nabu_kernel nabu_kernel
             - name: upload artifact
               uses: actions/upload-artifact@v3
