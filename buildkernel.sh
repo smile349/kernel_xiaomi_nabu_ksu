@@ -1,3 +1,8 @@
+#!/bin/sh
+SUDO=''
+if (( $EUID != 0 )); then
+    SUDO='sudo'
+fi
 export ARCH=arm64
 export CC=clang
 export PATH=$PATH:$(pwd)/build-shit/clang/bin
@@ -18,7 +23,7 @@ setup_environment() {
     mkdir clang && cd clang || exit
     echo "Downloading Clang..."
     wget $CLANG_URL -O clang.tar.gz -q || exit
-    tar xzf clang.tar.gz || exit
+    tar xzvf clang.tar.gz || exit
     cd ../..
 }
 
