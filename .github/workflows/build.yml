@@ -13,6 +13,7 @@ jobs:
                 fetch-depth: 1
                 path: nabu_kernel
                 set-safe-directory: "nabu_kernel/KernelSU"
+                submodules: true
             - name: build docker image
               run: docker build -t nabu_kernel nabu_kernel
             - name: pull newest KernelSU
