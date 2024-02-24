@@ -14,7 +14,7 @@ jobs:
                 submodules: 'recursive' # for kernelSU
                 path: nabu_kernel
             - name: build docker image
-              run: docker build -t nabu_kernel .
+              run: docker build -t nabu_kernel nabu_kernel
             - name: build
               run: docker run -v $(pwd)/nabu_kernel:/nabu_kernel -w/nabu_kernel nabu_kernel
             - name: upload artifact
