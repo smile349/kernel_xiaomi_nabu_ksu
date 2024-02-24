@@ -11,12 +11,14 @@ jobs:
               uses: actions/checkout@v2   
               with:
                 fetch-depth: 1
-                submodules: 'recursive' # for kernelSU
                 path: nabu_kernel
+                set-safe-directory: "nabu_kernel/KernelSU"
             - name: build docker image
               run: docker build -t nabu_kernel nabu_kernel
-            - name: build
-              run: docker run -v $(pwd)/nabu_kernel:/nabu_kernel -w/nabu_kernel nabu_kernel
+            - name: build kernel
+              run: |
+                cd nabu_kernel/KernelSU && git pull -f && cd ../..
+                docker run -v $(pwd)/nabu_kernel:/nabu_kernel -w/nabu_kernel nabu_kernel
             - name: upload artifact
               uses: actions/upload-artifact@v3
               with:
