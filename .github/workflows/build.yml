@@ -22,7 +22,7 @@ jobs:
                 submodules: true
             - name: build docker image
               run: docker build -t nabu_kernel nabu_kernel
-            - name: pull newest KernelSU
+            - name: pull KernelSU commit history and generate summary.
               run: |
                 cd nabu_kernel/KernelSU
                 git pull --unshallow # Get KernelSU Commit History. KSU use it to define its version
