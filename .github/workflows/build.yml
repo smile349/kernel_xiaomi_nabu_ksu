@@ -39,6 +39,7 @@ jobs:
               with:
                 name: kernel
                 path: nabu_kernel/CosmicFresh/Kernel.zip
+                retention-days: 5
             # - name: Notify to telegram bot
             #   uses: appleboy/telegram-action@master
             #   with:
