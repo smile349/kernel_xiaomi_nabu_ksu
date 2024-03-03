@@ -9,7 +9,7 @@ with open("KernelSU/kernel/Makefile", "r+") as f:
         "KSU_GIT_VERSION := $(shell cd $(srctree)/$(src); /usr/bin/env PATH=\"$$PATH\"" \
         ":/usr/bin:/usr/local/bin [ -f ../.git/shallow ] && git fetch --unshallow; git rev-list --count HEAD)"
     )
+    f.truncate(0)
     f.seek(0)
     f.write(content)
-    print(f.read())
     f.close()
