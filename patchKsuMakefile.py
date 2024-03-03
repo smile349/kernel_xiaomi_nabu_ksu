@@ -11,4 +11,5 @@ with open("KernelSU/kernel/Makefile", "r+") as f:
     )
     f.seek(0)
     f.write(content)
+    print(f.read())
     f.close()
