@@ -20,6 +20,12 @@ jobs:
                 path: nabu_kernel
                 set-safe-directory: "nabu_kernel/KernelSU"
                 submodules: true
+            - name: add safedirectory && fetch ksu commit log.
+              run: |
+                git config --global --add safe.directory /nabu_kernel/KernelSU
+                cd nabu_kernel/KernelSU && git fetch --unshallow
+            - name: patch ksu makefile
+              run: cd nabu_kernel && python3 patchKsuMakefile.py
             - name: build docker image
               run: docker build -t nabu_kernel nabu_kernel
             - name: build kernel
